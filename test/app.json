@@ -1,0 +1,19 @@
+{
+  "name": "Vast Lands",
+  "description": "A 2d open-world game",
+  "author": "Patrick Carroll",
+  "version": "0.0.1",
+  "main": "./index.js",
+  "import": [
+    "hoot.display",
+    "hoot.scene",
+    "hoot.sceneManager",
+    "hoot.file",
+    "hoot.fileReader",
+    "hoot.image"
+  ],
+  "width": 960,
+  "height": 720,
+  "antialias": false,
+  "centerOnPage": true
+}
