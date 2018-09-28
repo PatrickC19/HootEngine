@@ -6,12 +6,16 @@
   "main": "./index.js",
   "import": [
     "hoot.display",
+    "hoot.camera",
+    "hoot.sprite",
     "hoot.scene",
     "hoot.sceneManager",
     "hoot.file",
     "hoot.fileReader",
-    "hoot.image"
+    "hoot.image",
+    "hoot.assetsManager"
   ],
+  "assets": "./assets.json",
   "width": 960,
   "height": 720,
   "antialias": false,

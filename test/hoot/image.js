@@ -1,3 +1,4 @@
+
 /**
  * By The Hoot Engine
  * @type {Hoot.Image}
@@ -7,15 +8,11 @@ Hoot.Image = class {
     /*
      * @Constructor
      */
-    constructor(key, path) {
-        if (typeof key !== "string") {
-            key = "unknown";
-        }
+    constructor(path) {
         if (typeof path !== "string") {
             path = "none";
         }
 
-        this.key = key;
         this.path = path;
 
         this.status = "LOADING";
@@ -25,6 +22,12 @@ Hoot.Image = class {
 
         this.response = new Image();
         this.response.src = this.path;
+        this.response.async = true;
+
+        this.size = {
+            width: this.response.width,
+            height: this.response.height
+        };
 
         this._onload = null;
         this._hasOnload = false;
@@ -60,6 +63,14 @@ Hoot.Image = class {
      * @Getters and Setters
      */
 
+    getWidth() {
+        return this.size.width;
+    }
+
+    getHeight() {
+        return this.size.height;
+    }
+
     getLoaded() {
         if (this.status === "LOADED") {
             return true;
@@ -86,18 +97,6 @@ Hoot.Image = class {
 
     getResponse() {
         return this.response;
-    }
-
-    getKey() {
-        return this.key;
-    }
-
-    setKey(key) {
-        if (typeof key !== "string") {
-            return false;
-        }
-
-        this.key = key;
     }
 
     getPath() {

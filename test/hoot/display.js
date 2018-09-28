@@ -31,6 +31,8 @@ Hoot.Display = class {
         this.width = width;
         this.height = height;
 
+        this.camera = null;
+
         this.element = null;
 
         if (this.hasElementId) {
@@ -60,14 +62,14 @@ Hoot.Display = class {
      * @Methods
      */
 
-    //TEST
     //Render an image or graphic onto the screen
-    render(object) {
-        if (typeof object === 'undefined') {
-            //Put an error message here
+    setCamera(camera) {
+        if (!camera instanceof Hoot.Camera) {
+            console.error("Hoot Error: Cannot add camera that is not an instanceof 'Hoot.Camera.'");
             return false;
         }
 
-        this.context.drawImage(object.response, 100, 100);
+        this.camera = camera;
+        camera.setDisplay(this);
     }
 };

@@ -32,6 +32,7 @@ Hoot.Scene = class {
         }
 
         this.init();
+
         this.create();
 
         this.isRunning = true;
@@ -55,7 +56,11 @@ Hoot.Scene = class {
     //*Looped* update game objects and variables.
     _tick() {
         if (this.isRunning) {
-            this.tick();
+            try {
+                this.tick();
+            }catch {
+                this.stop();
+            }
 
             window.requestAnimationFrame(this._tick.bind(this));
         }
@@ -64,7 +69,11 @@ Hoot.Scene = class {
     //*Looped* render the game objects
     _render() {
         if (this.isRunning) {
-            this.render();
+            try {
+                this.render();
+            }catch {
+                this.stop();
+            }
 
             window.requestAnimationFrame(this._render.bind(this));
         }
